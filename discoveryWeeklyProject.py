@@ -87,7 +87,7 @@ class discoverySongs:
         print("Adding to playlist")
         query = "https://api.spotify.com/v1/playlists/{}/tracks?uris={}".format(playlist_id,self.tracks)
         response = requests.post(query, headers={"Content-Type": "application/json", "Authorization": "Bearer {}".format(self.spotify_token)})
-
+        self.deleteDups()
         print(response.json)
 
 
@@ -148,8 +148,8 @@ class discoverySongs:
 
         #removes the duplicates
         query = "https://api.spotify.com/v1/playlists/{}/tracks".format(playlist_id)
-        response = requests.delete(query, headers={"Content-Type": "application/json", "Authorization": "Bearer {}".format(self.spotify_token)}, data={"tracks": final_del})  
-        print(response)
+        #response = requests.delete(query, headers={"Content-Type": "application/json", "Authorization": "Bearer {}".format(self.spotify_token)}, data={"tracks": final_del})  
+        #print(response)
 
 
 
